@@ -1,0 +1,24 @@
+name: mingpt-gpu-instance
+
+resources:
+  cloud: aws
+  region: us-east-1
+  cpus: 4+
+  accelerators: T4:4
+
+workdir: .
+
+envs:
+  MODEL_PREFIX: shakespeare
+
+setup: |
+  set -e  # Exit if any command failed.
+  conda env create -f conda.yml
+
+run: |
+  set -e  # Exit if any command failed.
+  conda activate tf-mingpt
+  echo "Data file is expected to be named ${MODEL_PREFIX}.txt and config is expected to be named ${MODEL_PREFIX}.yml"
+  python main.py generate ./tmp/${MODEL_PREFIX}.txt --config-filepath ./${MODEL_PREFIX}.yml --no-pretrained # This will generate garbage
+  python main.py train --config-filepath ./${MODEL_PREFIX}.yml
+  python main.py generate ./tmp/${MODEL_PREFIX}.txt --config-filepath ./${MODEL_PREFIX}.yml # This is generate slightly better garbage

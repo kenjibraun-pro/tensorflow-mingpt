@@ -1,0 +1,11 @@
+dataset_url: https://raw.githubusercontent.com/am1tyadav/superhero/master/superheroes.txt
+data_filepath: ./tmp/superhero.txt
+model_filepath: ./tmp/mingpt_superhero.h5
+batch_size: 8
+block_size: 12
+embedding_dim: 32
+num_heads_per_block: 4
+num_attention_blocks: 4
+dropout_rate: 0.2
+learning_rate: 0.001
+num_tokens_to_generate: 100

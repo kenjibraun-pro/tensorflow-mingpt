@@ -1,0 +1,11 @@
+dataset_url: https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
+data_filepath: ./tmp/shakespeare.txt
+model_filepath: ./tmp/mingpt_shakespeare.h5
+batch_size: 16
+block_size: 256
+embedding_dim: 384
+num_heads_per_block: 6
+num_attention_blocks: 6
+dropout_rate: 0.2
+learning_rate: 0.001
+num_tokens_to_generate: 1000
